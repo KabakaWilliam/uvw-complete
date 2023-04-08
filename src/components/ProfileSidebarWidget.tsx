@@ -1,12 +1,15 @@
 import { Profile } from "@prisma/client";
 import { useRecoilState } from "recoil";
 import SelectedUserState from "y/atoms/SelectedUserState";
+import CurrentModalState from "y/atoms/modalState";
 
 const ProfileSidebarWidget = (props: Profile) => {
   const [selectedUser, setSelectedUser] = useRecoilState(SelectedUserState);
+  const [CurrentModal, setCurrentModal] = useRecoilState(CurrentModalState);
 
   const selectUserHandler = () => {
     setSelectedUser(props);
+    setCurrentModal("profileModal");
   };
   return (
     <div

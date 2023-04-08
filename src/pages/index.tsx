@@ -13,6 +13,7 @@ import { useRecoilState } from "recoil";
 import SelectedUserState from "y/atoms/SelectedUserState";
 import Carousel from "y/components/Carousel";
 import { useEffect } from "react";
+import CurrentModalState from "y/atoms/modalState";
 
 const Header = () => {
   return (
@@ -74,7 +75,7 @@ const HeroCopy = () => {
 
 const Navbar = () => {
   return (
-    <nav className="borderContainers flex min-h-[7vh] w-screen items-center justify-center gap-x-[15px] bg-[#0F3649] font-sans md:border-t">
+    <nav className="borderContainers flex min-h-[7vh] w-screen items-center justify-center gap-x-[15px] border-b border-b-[#59D6F6] bg-[#0F3649] font-sans md:border-b-0 md:border-t">
       <div className=" text-[14px] font-bold text-[#CCCCCC] md:text-[18px]">
         Occupation
       </div>
@@ -171,6 +172,21 @@ const ProfileDataSection = () => {
   );
 };
 
+const MobileDataTable = () => {
+  const [CurrentModal, setCurrentModal] = useRecoilState(CurrentModalState);
+
+  if (CurrentModal == "profileModal") {
+    return (
+      <div className="absolute top-0 flex h-max  w-screen flex-col bg-[#0f3649]  md:hidden">
+        <ProfileBio />
+        <ProfileMedia />
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
+
 const DataTable = () => {
   return (
     <section className="flex h-[93vh] w-screen">
@@ -182,9 +198,10 @@ const DataTable = () => {
 
 const Feed = () => {
   return (
-    <section className="h-screen w-screen bg-[#0F3649]">
+    <section className="relative h-screen w-screen bg-[#0F3649]">
       <Navbar />
       <DataTable />
+      <MobileDataTable />
     </section>
   );
 };
