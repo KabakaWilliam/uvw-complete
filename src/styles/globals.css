@@ -8,6 +8,16 @@ body {
 
   font-family: "Fredoka One", cursive, Roboto;
 }
+.list_container {
+  direction: rtl;
+  overflow: auto;
+  height: 50px;
+  width: 50px;
+}
+
+.item_direction {
+  direction: ltr;
+}
 
 @tailwind base;
 @tailwind components;

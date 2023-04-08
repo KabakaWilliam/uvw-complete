@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "mysql"
     url      = env("DATABASE_URL")
 }
 
@@ -14,4 +14,27 @@ model Example {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+
+
+model Profile{
+    id               String   @id @default(cuid())
+    Age              Int
+    FullName         String
+    Flag             String
+    Country          String
+    Job              String
+    Description      String
+    MainProfileImage String
+    Media       ProfileMedia []
+}
+
+
+model ProfileMedia {
+  id      Int     @id @default(autoincrement())
+  caption String
+  type    String?
+  link    String
+  user    Profile    @relation(fields: [userId], references: [id])
+  userId  String
 }
