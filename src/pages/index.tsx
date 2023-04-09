@@ -114,7 +114,7 @@ const ProfileBio = () => {
   const [selectedUser, setSelectedUser] = useRecoilState(SelectedUserState);
 
   return (
-    <section className="borderContainers h-full px-[3%] py-[40px] md:w-[47%] md:border-y  md:border-r">
+    <section className="borderContainers h-max px-[3%] py-[40px] md:h-full md:w-[47%] md:border-y  md:border-r">
       <div className="h-full w-full overflow-y-scroll  ">
         <div className="text-[50px] leading-[50px] text-[#59D6F6]">
           {selectedUser.FullName == "" ? "Linus Gordon" : selectedUser.FullName}
