@@ -156,7 +156,7 @@ const ProfileMedia = () => {
     <section className="borderContainers h-full w-full overflow-y-scroll  px-[3%] py-[40px] font-sans md:w-[53%] md:border-y">
       <div className="h-max w-full border border-[#59D6F6] p-[14px]">
         <div className="flex h-[300px] w-full overflow-x-scroll md:h-[448px]">
-          <Carousel items={items} />
+          {/* <Carousel items={items} /> */}
         </div>
         <div className="h-2" />
         <div className=" w-full  px-[2%] text-[18px] text-[#C6C6C6]">
