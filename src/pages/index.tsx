@@ -153,9 +153,9 @@ const ProfileMedia = () => {
   ] as Array<{ type: "image" | "video"; url: string }>;
 
   return (
-    <section className="borderContainers h-full overflow-y-scroll  px-[3%] py-[40px] font-sans md:w-[53%] md:border-y">
+    <section className="borderContainers h-full w-full overflow-y-scroll  px-[3%] py-[40px] font-sans md:w-[53%] md:border-y">
       <div className="h-max w-full border border-[#59D6F6] p-[14px]">
-        <div className=" bg-  flex h-[448px] w-full overflow-x-scroll">
+        <div className="flex h-[300px] w-full overflow-x-scroll md:h-[448px]">
           <Carousel items={items} />
         </div>
         <div className="h-2" />
