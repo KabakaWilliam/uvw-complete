@@ -95,13 +95,19 @@ const Navbar = () => {
 };
 
 const ProfileSidebar = () => {
-  return (
-    <section className="borderContainers list_container h-full  w-[100%] overflow-y-scroll border-l-black  md:w-[20%]  md:border">
-      {FakeProfiles.AllProfiles.map((profileData) => (
-        <ProfileSidebarWidget {...profileData} key={profileData.id} />
-      ))}{" "}
-    </section>
-  );
+  const [CurrentModal, setCurrentModal] = useRecoilState(CurrentModalState);
+
+  if (CurrentModal == "hidden") {
+    return (
+      <section className="borderContainers list_container h-full  w-[100%] overflow-y-scroll border-l-black  md:w-[20%]  md:border">
+        {FakeProfiles.AllProfiles.map((profileData) => (
+          <ProfileSidebarWidget {...profileData} key={profileData.id} />
+        ))}{" "}
+      </section>
+    );
+  } else {
+    return null;
+  }
 };
 
 const ProfileBio = () => {
