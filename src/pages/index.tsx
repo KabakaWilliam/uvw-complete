@@ -177,7 +177,7 @@ const MobileDataTable = () => {
 
   if (CurrentModal == "profileModal") {
     return (
-      <div className="absolute top-0 flex h-max  w-screen flex-col bg-[#0f3649]  md:hidden">
+      <div className="absolute top-0 z-40 flex h-max  w-screen flex-col bg-[#0f3649]  md:hidden">
         <ProfileBio />
         <ProfileMedia />
       </div>
