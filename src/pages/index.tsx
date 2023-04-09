@@ -14,6 +14,7 @@ import SelectedUserState from "y/atoms/SelectedUserState";
 import Carousel from "y/components/Carousel";
 import { useEffect } from "react";
 import CurrentModalState from "y/atoms/modalState";
+import { useWindowSize } from "usehooks-ts";
 
 const Header = () => {
   return (
@@ -188,10 +189,12 @@ const MobileDataTable = () => {
 };
 
 const DataTable = () => {
+  const { width, height } = useWindowSize();
+
   return (
     <section className="flex h-[93vh] w-screen">
       <ProfileSidebar />
-      <ProfileDataSection />
+      <>{width > 640 && <ProfileDataSection />}</>
     </section>
   );
 };
