@@ -100,7 +100,12 @@ const Second_Column = () => {
   );
 };
 const Third_Column = () => {
-  return <section className="h-full w-[54%] border-r border-black"></section>;
+  return (
+    <section className="h-full w-[54%] border-r border-black">
+      <Preview_Container />
+      <Editing_Container />
+    </section>
+  );
 };
 
 const Admin_Search_Component = () => {
@@ -202,4 +207,12 @@ const Searched_Profile_Row_Result = (props: searched_result) => {
       </section>
     </button>
   );
+};
+
+// third column
+const Preview_Container = () => {
+  return <section className="h-[51%] w-full bg-[#4A4A4A]"></section>;
+};
+const Editing_Container = () => {
+  return <section className="h-[49%] w-full"></section>;
 };
