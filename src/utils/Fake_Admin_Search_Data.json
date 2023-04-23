@@ -1,0 +1,37 @@
+[
+  {
+    "Flag": "UK",
+    "Name": "John Doe",
+    "Industry": "Manufacturing",
+    "Published": true,
+    "Missing_Data": false
+  },
+  {
+    "Flag": "UK",
+    "Name": "Jane Smith",
+    "Industry": "Finance",
+    "Published": false,
+    "Missing_Data": true
+  },
+  {
+    "Flag": "UK",
+    "Name": "Peter Parker",
+    "Industry": "Technology",
+    "Published": true,
+    "Missing_Data": false
+  },
+  {
+    "Flag": "UK",
+    "Name": "Mary Jane",
+    "Industry": "Healthcare",
+    "Published": true,
+    "Missing_Data": true
+  },
+  {
+    "Flag": "UK",
+    "Name": "Clark Kent",
+    "Industry": "Media",
+    "Published": false,
+    "Missing_Data": false
+  }
+]
