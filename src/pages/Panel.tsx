@@ -10,6 +10,7 @@ import {
   Admin_Search_Icon,
   Admin_Settings_Icon,
   Admin_Unpublished_Result_Icon,
+  Refresh_Icon,
 } from "y/components/Icons/Admin_Column_Icons";
 import UVW_Admin_Logo from "y/components/Icons/UVW_Admin_Logo";
 
@@ -211,7 +212,39 @@ const Searched_Profile_Row_Result = (props: searched_result) => {
 
 // third column
 const Preview_Container = () => {
-  return <section className="h-[51%] w-full bg-[#4A4A4A]"></section>;
+  const [collapsed, set_collapsed] = useState(false);
+  return (
+    <section
+      className={`w-full bg-[#4A4A4A] px-[50px] ${
+        collapsed ? "h-max" : "h-[51%]"
+      }`}
+    >
+      <div className={`flex h-[25%] w-full `}>
+        <div className="flex h-full w-[30%] items-center justify-start gap-x-[18px] text-xl font-extrabold text-[#E2E2E2]">
+          Preview
+          <button>
+            <Refresh_Icon />
+          </button>
+        </div>
+        <div className="flex  h-full w-[40%] items-center justify-center text-sm text-[#E2E2E2]">
+          <div className="flex gap-x-[18px] md:hidden">
+            Expand
+            <Admin_Dropdown_Button_Icon />
+          </div>
+        </div>
+        <div className="flex h-full w-[30%] items-center justify-end">
+          <button className="h-[41px] w-[171px] border border-black bg-[#2D6E41] font-semibold text-[#E2E2E2]">
+            Publish
+          </button>
+        </div>
+      </div>
+      <div
+        className={
+          collapsed ? `hidden` : `h-[69%] w-full border border-[#59D6F6]`
+        }
+      ></div>
+    </section>
+  );
 };
 const Editing_Container = () => {
   return <section className="h-[49%] w-full"></section>;
