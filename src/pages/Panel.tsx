@@ -10,6 +10,7 @@ import {
   Admin_Search_Icon,
   Admin_Settings_Icon,
   Admin_Unpublished_Result_Icon,
+  Cloud_Upload_Icon,
   Refresh_Icon,
 } from "y/components/Icons/Admin_Column_Icons";
 import UVW_Admin_Logo from "y/components/Icons/UVW_Admin_Logo";
@@ -21,7 +22,7 @@ import { ADMIN_SEARCH_BUTTON_OPTIONS } from "y/utils/Admin_Consts";
 const Panel = () => {
   return (
     <>
-      <div className="flex h-screen w-screen border border-black bg-white font-sans ">
+      <div className="flex h-screen w-screen border border-black bg-white  ">
         <First_Column />
         <Second_Column />
         <Third_Column />
@@ -34,7 +35,7 @@ export default Panel;
 
 const First_Column = () => {
   return (
-    <section className="h-full w-[23%] border-r border-black bg-[#E2E2E2] ">
+    <section className="h-full w-[23%] border-r border-black bg-[#E2E2E2] font-sans">
       {/* lefft col */}
       <section className="flex h-[25%] min-h-[248px] w-full flex-col items-center justify-end  bg-[#E2E2E2] pt-[106px]">
         <UVW_Admin_Logo />
@@ -89,7 +90,7 @@ const First_Column = () => {
 
 const Second_Column = () => {
   return (
-    <section className="h-full w-[23%] border-r border-black bg-[#E2E2E2]">
+    <section className="h-full w-[23%] border-r border-black bg-[#E2E2E2] font-sans">
       <section className="flex h-max w-full flex-col items-center gap-y-4   ">
         <div className="flex w-[360px] justify-start pt-[47px] text-xl font-bold text-[#4A4A4A]">
           Search
@@ -102,7 +103,7 @@ const Second_Column = () => {
 };
 const Third_Column = () => {
   return (
-    <section className="h-full w-[54%] border-r border-black">
+    <section className="h-full w-[54%] border-r border-black bg-[#E2E2E2]">
       <Preview_Container />
       <Editing_Container />
     </section>
@@ -219,7 +220,7 @@ const Preview_Container = () => {
         collapsed ? "h-max" : "h-[51%]"
       }`}
     >
-      <div className={`flex h-[25%] w-full `}>
+      <div className={`flex h-[25%] w-full font-sans `}>
         <div className="flex h-full w-[30%] items-center justify-start gap-x-[18px] text-xl font-extrabold text-[#E2E2E2]">
           Preview
           <button>
@@ -240,12 +241,227 @@ const Preview_Container = () => {
       </div>
       <div
         className={
-          collapsed ? `hidden` : `h-[69%] w-full border border-[#59D6F6]`
+          collapsed
+            ? `hidden`
+            : `flex h-[69%] w-full border border-[#59D6F6] bg-[#0F3649]`
         }
-      ></div>
+      >
+        <div className="flex h-full w-[44%] items-center justify-center border-r border-[#59D6F6] ">
+          <div className="h-[83%] w-[71%] ">
+            <div className="h-[20%] text-[25px] text-[#59D6F6]">
+              Linus Garner
+            </div>
+            <div className=" flex h-[10%] w-full gap-x-[10px] font-sans text-[9px] font-bold  text-[#CCCCCC]">
+              <div className="flex w-max items-center justify-center rounded-[22px] border border-[#59D6F6] px-2">
+                Seychelles
+              </div>
+              <div className="flex w-max items-center justify-center rounded-[22px] border border-[#59D6F6] px-2">
+                Food Services Worker
+              </div>
+            </div>
+            <div className=" h-[10%] w-full "></div>
+            <div className="h-[60%] w-full font-sans text-[9px] font-bold text-[#CCCCCC] ">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Asperiores aut delectus laborum illo error dicta mollitia
+              assumenda, sapiente perspiciatis vel tempore animi expedita soluta
+              deleniti beatae voluptatem commodi ratione quibusdam!
+            </div>
+          </div>
+        </div>
+        <div className="flex h-full w-[56%] items-center justify-center font-sans">
+          <div className="flex h-[83%] w-[90%] flex-col border border-[#59D6F6] px-[10px] py-[10px]">
+            <div className="h-[87%] w-full bg-gray-400"></div>
+            <div className="h-[6%]"></div>
+            <div className="text-[9px] text-[#C6C6C6]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
 const Editing_Container = () => {
-  return <section className="h-[49%] w-full"></section>;
+  return (
+    <section className="h-[49%] w-full  px-[50px] font-sans">
+      <section className="flex h-[54px] w-full items-center justify-start border-b border-black pt-[21px]">
+        <div className="flex  h-full w-[52%] items-center justify-start text-xl font-bold text-[#0F3649] ">
+          Edit Profile
+        </div>
+        <div className="flex h-full w-[48%] justify-start">
+          <div className="flex h-full w-[30%] items-center justify-end font-medium text-[#4A4A4A] ">
+            Profile Status:
+          </div>
+          <div className=" flex h-full w-[35%] items-center justify-end gap-x-2 font-medium text-black ">
+            Missing Data
+            <Admin_Missing_Fields_Result_Icon />
+          </div>
+          <div className="flex h-full w-[35%] items-center justify-end gap-x-2 font-medium text-black">
+            Published
+            <Admin_Published_Result_Icon />
+          </div>
+        </div>
+      </section>
+      <section className="h-[85%] overflow-y-scroll">
+        <section className="mt-[30px] flex h-[310px] w-full">
+          <form className="h-full w-[60%] ">
+            <div className="h-[46px] w-full text-sm  text-[#4A4A4A]">
+              <label
+                className="flex h-[22px] items-center font-medium"
+                htmlFor="Name"
+              >
+                Name
+              </label>
+              <input
+                className="h-[24px] w-full border border-[#777777] bg-transparent px-[10px] py-[5px] outline-none"
+                type="text"
+                id="Name"
+              />
+            </div>
+            <div className="h-5" />
+            <div className="w-full text-sm text-[#4A4A4A] ">
+              <label
+                className="flex h-[22px] items-center font-medium"
+                htmlFor="Bio"
+              >
+                Bio
+              </label>
+              <div className="flex h-[24px] w-full items-center justify-end border border-[#777777] bg-transparent px-[10px] py-[5px] text-[12px] text-[#777777]">
+                Word Count | 9999
+              </div>
+              <textarea
+                className="h-[200px] w-full resize-none border-x border-b border-[#777777] bg-white px-[10px] py-[5px] outline-none"
+                id="Name"
+              />
+            </div>
+          </form>
+          <div className="w-[4%]" />
+          {/* right side */}
+          <div className="h-full w-[36%] ">
+            <div className="h-[46px] w-full text-sm  text-[#4A4A4A]">
+              <label
+                className="flex h-[22px] w-full items-center font-medium"
+                htmlFor="DOB"
+              >
+                <div className="w-[40%] font-medium text-[#4A4A4A]">
+                  Date of Birth
+                </div>
+                <div className="flex w-[60%] justify-end gap-x-2 text-[10px] font-medium text-[#AAAAAA]">
+                  <div className="">Show on profile?</div>
+                  <div className="font-black text-black">Yes</div>
+                  <div className="">No</div>
+                </div>
+              </label>
+              <input
+                className="h-[24px] w-full border border-[#777777] bg-transparent px-[10px] py-[5px] outline-none"
+                type="date"
+                id="DOB"
+              />
+            </div>
+            <div className="mt-[20px] h-[46px] w-full text-sm  text-[#4A4A4A]">
+              <label
+                className="flex h-[22px] w-full items-center font-medium"
+                htmlFor="Nationality"
+              >
+                <div className="w-[40%] font-medium text-[#4A4A4A]">
+                  Nationality
+                </div>
+                <div className="flex w-[60%] justify-end gap-x-2 text-[10px] font-medium text-[#AAAAAA]">
+                  <div className="">Show on profile?</div>
+                  <div className="font-black text-black">Yes</div>
+                  <div className="">No</div>
+                </div>
+              </label>
+              <div className="flex h-[24px] w-full border border-[#777777] bg-transparent px-[10px] outline-none">
+                <div className="h-full w-[10%]"></div>
+                <input
+                  className="h-full w-[90%]  bg-transparent   outline-none"
+                  type="text"
+                  id="Nationality"
+                  placeholder="United Kingdom"
+                />
+              </div>
+            </div>
+            <div className="mt-[20px] h-[46px] w-full  text-sm text-[#4A4A4A]">
+              <label
+                className="flex h-[22px] w-full items-center font-medium"
+                htmlFor="Occupation"
+              >
+                <div className="w-[40%] font-medium text-[#4A4A4A]">
+                  Occupation
+                </div>
+                <div className="flex w-[60%] justify-end gap-x-2 text-[10px] font-medium text-[#AAAAAA]">
+                  <div className="">Show on profile?</div>
+                  <div className="font-black text-black">Yes</div>
+                  <div className="">No</div>
+                </div>
+              </label>
+              <input
+                className="h-[24px] w-full border border-[#777777] bg-transparent px-[10px] py-[5px] outline-none"
+                type="text"
+                id="Occupation"
+              />
+            </div>
+            <div className="mt-[20px] h-[46px] w-full  text-sm text-[#4A4A4A]">
+              <label
+                className="flex h-[22px] w-full items-center font-medium"
+                htmlFor="Phone"
+              >
+                <div className="w-[40%] font-medium text-[#4A4A4A]">Phone</div>
+                <div className="flex w-[60%] justify-end gap-x-2 text-[10px] font-medium text-[#AAAAAA]">
+                  <div className="">Show on profile?</div>
+                  <div className="font-black text-black">Yes</div>
+                  <div className="">No</div>
+                </div>
+              </label>
+              <input
+                className="h-[24px] w-full border border-[#777777] bg-transparent px-[10px] py-[5px] outline-none"
+                type="text"
+                id="Phone"
+              />
+            </div>
+            <div className="mt-[20px] h-[46px] w-full  text-sm text-[#4A4A4A]">
+              <label
+                className="flex h-[22px] w-full items-center font-medium"
+                htmlFor="Twitter"
+              >
+                <div className="w-[40%] font-medium text-[#4A4A4A]">
+                  Twitter
+                </div>
+                <div className="flex w-[60%] justify-end gap-x-2 text-[10px] font-medium text-[#AAAAAA]">
+                  <div className="">Show on profile?</div>
+                  <div className="font-black text-black">Yes</div>
+                  <div className="">No</div>
+                </div>
+              </label>
+              <input
+                className="h-[24px] w-full border border-[#777777] bg-transparent px-[10px] py-[5px] outline-none"
+                type="text"
+                id="Twitter"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div className="mt-[30px] h-[22px] w-full border-b border-black text-sm font-medium text-[#4A4A4A]">
+          Media
+        </div>
+        <section className="mt-[40px] flex flex-col items-center">
+          {/* upload container */}
+          <section className="h-[54px] w-full ">
+            <div className="flex w-full justify-center text-[16px] font-bold text-[#4A4A4A]">
+              No Media
+            </div>
+          </section>
+          <button className="flex h-[30px] w-[100px] items-center  justify-center gap-x-[7px] border border-[#4A4A4A] text-sm font-bold text-[#4A4A4A] hover:bg-[#4A4A4A] hover:text-white">
+            Upload
+            <Cloud_Upload_Icon />
+          </button>
+        </section>
+      </section>
+    </section>
+  );
 };
+
+// select country option library:
+// https://github.com/driaug/react-country-selector
