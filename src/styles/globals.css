@@ -27,4 +27,7 @@ body {
   .borderContainers {
     @apply md:border-[#59D6F6];
   }
+  .occupationButton {
+    @apply h-[35px] w-[63%] rounded-[7px] border  text-lg font-bold hover:border-[2px] hover:border-[#0B8700] md:w-[16%];
+  }
 }

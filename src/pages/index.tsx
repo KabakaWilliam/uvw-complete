@@ -15,7 +15,11 @@ import Carousel from "y/components/Carousel";
 import { useEffect } from "react";
 import CurrentModalState from "y/atoms/modalState";
 import { useWindowSize } from "usehooks-ts";
-import Arrow_Right_Icon from "y/components/Icons/Arrow_Right_Icon";
+import Arrow_Right_Icon, {
+  Arrow_Up_Icon,
+} from "y/components/Icons/Arrow_Right_Icon";
+import { OccupationOptions } from "y/utils/OccupationOptions";
+import FilterIcon from "y/components/Icons/FilterIcon";
 
 const Header = () => {
   // const authRes = api.example.auth.useQuery();
@@ -78,6 +82,14 @@ const HeroCopy = () => {
 };
 
 const Navbar = () => {
+  const [CurrentModal, setCurrentModal] = useRecoilState(CurrentModalState);
+  const showFilterOptions = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (CurrentModal == "hidden") {
+      setCurrentModal("navbarModal");
+    } else {
+      setCurrentModal("hidden");
+    }
+  };
   return (
     <nav className="borderContainers flex min-h-[7vh] w-screen items-center justify-center gap-x-[15px] border-b border-b-[#59D6F6] bg-[#0F3649] font-sans md:border-b-0 md:border-t">
       <div className=" text-[14px] font-bold text-[#CCCCCC] md:text-[18px]">
@@ -88,12 +100,34 @@ const Navbar = () => {
           All
         </div>
         <div className="flex h-full w-[21%] items-center justify-center md:w-[20%]">
-          <button className=" flex h-[41px] w-[51px] items-center justify-center rounded-[7px] bg-[#0F3649]">
-            <AdjustmentsHorizontalIcon className="h-[15px] w-[18px] text-[#CCCCCC]" />
+          <button
+            onClick={showFilterOptions}
+            className=" flex h-[41px] w-[51px] items-center justify-center rounded-[7px] bg-[#0F3649]"
+          >
+            {CurrentModal == "hidden" ? <FilterIcon /> : <Arrow_Up_Icon />}
           </button>
         </div>
       </div>
     </nav>
+  );
+};
+
+const NavFilters = () => {
+  return (
+    <div className="absolute top-[7vh]  flex h-[93vh] w-full flex-col flex-wrap items-center  gap-x-[26px] gap-y-[26px] bg-[#CCCCCC] pt-[39px] font-sans md:relative md:top-0 md:h-[164px] md:flex-row md:justify-center md:gap-y-[0px] md:pt-0">
+      {OccupationOptions.map((option, index) => (
+        <button
+          key={option.id}
+          className={
+            option.selected
+              ? `occupationButton border-[2px] border-[#0B8700]`
+              : `occupationButton border-black`
+          }
+        >
+          {option.Occupation}
+        </button>
+      ))}
+    </div>
   );
 };
 
@@ -230,9 +264,12 @@ const DataTable = () => {
 };
 
 const Feed = () => {
+  const [CurrentModal, setCurrentModal] = useRecoilState(CurrentModalState);
+
   return (
     <section className="relative h-screen w-screen bg-[#0F3649]">
       <Navbar />
+      {CurrentModal == "navbarModal" && <NavFilters />}
       <DataTable />
       <MobileDataTable />
     </section>

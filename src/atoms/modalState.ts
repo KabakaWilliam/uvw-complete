@@ -8,5 +8,5 @@ const CurrentModalState = atom({
 export default CurrentModalState;
 
 declare global {
-  type CurrentModaStates = "profileModal" | "hidden";
+  type CurrentModaStates = "profileModal" | "hidden" | "navbarModal";
 }
