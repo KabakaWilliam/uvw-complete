@@ -1,10 +1,16 @@
+import { useRouter } from "next/router";
+
 const UVW_Admin_Logo = () => {
+  const router = useRouter();
+
   return (
     <svg
+      onClick={() => router.push("/")}
       width="208"
       height="53"
       viewBox="0 0 208 53"
       fill="none"
+      className="cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
