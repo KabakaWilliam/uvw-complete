@@ -15,8 +15,11 @@ import Carousel from "y/components/Carousel";
 import { useEffect } from "react";
 import CurrentModalState from "y/atoms/modalState";
 import { useWindowSize } from "usehooks-ts";
+import Arrow_Right_Icon from "y/components/Icons/Arrow_Right_Icon";
 
 const Header = () => {
+  // const authRes = api.example.auth.useQuery();
+
   return (
     <div className="flex  h-[5vh] w-screen items-center justify-center gap-x-3 bg-[#59D6F6] py-[15px] text-[#0F3649] ">
       <MegaphoneIcon />
@@ -96,18 +99,25 @@ const Navbar = () => {
 
 const ProfileSidebar = () => {
   const [CurrentModal, setCurrentModal] = useRecoilState(CurrentModalState);
+  return (
+    <section className="borderContainers list_container h-full  w-[100%] overflow-y-scroll border-l-black  md:w-[20%]  md:border">
+      {FakeProfiles.AllProfiles.map((profileData) => (
+        <ProfileSidebarWidget {...profileData} key={profileData.id} />
+      ))}{" "}
+    </section>
+  );
 
-  if (CurrentModal == "hidden") {
-    return (
-      <section className="borderContainers list_container h-full  w-[100%] overflow-y-scroll border-l-black  md:w-[20%]  md:border">
-        {FakeProfiles.AllProfiles.map((profileData) => (
-          <ProfileSidebarWidget {...profileData} key={profileData.id} />
-        ))}{" "}
-      </section>
-    );
-  } else {
-    return null;
-  }
+  // if (CurrentModal == "hidden") {
+  //   return (
+  //     <section className="borderContainers list_container h-full  w-[100%] overflow-y-scroll border-l-black  md:w-[20%]  md:border">
+  //       {FakeProfiles.AllProfiles.map((profileData) => (
+  //         <ProfileSidebarWidget {...profileData} key={profileData.id} />
+  //       ))}{" "}
+  //     </section>
+  //   );
+  // } else {
+  //   return null;
+  // }
 };
 
 const ProfileBio = () => {
@@ -153,7 +163,7 @@ const ProfileMedia = () => {
   ] as Array<{ type: "image" | "video"; url: string }>;
 
   return (
-    <section className="borderContainers h-full w-full overflow-y-scroll  px-[3%] py-[40px] font-sans md:w-[53%] md:border-y">
+    <section className="borderContainers  h-full w-full overflow-y-scroll  px-[3%] py-[40px] font-sans md:w-[53%] md:border-y">
       <div className="h-max w-full border border-[#59D6F6] p-[14px]">
         <div className="flex h-[300px] w-full overflow-x-scroll md:h-[448px]">
           <Carousel items={items} />
@@ -181,10 +191,24 @@ const ProfileDataSection = () => {
 
 const MobileDataTable = () => {
   const [CurrentModal, setCurrentModal] = useRecoilState(CurrentModalState);
+  // MouseEventHandler<HTMLButtonElement>
+  const Move_Back_Helper = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setCurrentModal("hidden");
+  };
 
   if (CurrentModal == "profileModal") {
     return (
       <div className="absolute top-0 z-40 flex h-max min-h-screen  w-screen flex-col bg-[#0f3649]  md:hidden">
+        <div className="absolute left-0 flex h-full w-20 items-center">
+          <button
+            onClick={Move_Back_Helper}
+            className="absolute left-0 z-50 flex h-20 w-5 items-center justify-center rounded-r-[10px] bg-[#D9D9D9]"
+          >
+            <Arrow_Right_Icon />
+          </button>
+        </div>
+
         <ProfileBio />
         <ProfileMedia />
       </div>
